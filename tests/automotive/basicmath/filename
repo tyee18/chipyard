@@ -1,0 +1,3 @@
+rm -rf basicmath_small basicmath_large output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 basicmath_small.c   rad2deg.c  cubic.c   isqrt.c ../../timers/timers.c -o basicmath_small -lm
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 basicmath_large.c   rad2deg.c  cubic.c   isqrt.c -o basicmath_large -lm

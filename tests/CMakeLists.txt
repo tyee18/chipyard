@@ -67,6 +67,16 @@ add_link_options(-T ${LINKER_SCRIPT})
 # Build
 #################################
 
+# MiBench-specific tests
+# set(SOURCE_FILES "basicmath_small.c" "rad2deg.c" "cubic.c" "isqrt.c" "timers.c")
+set(SOURCE_FILES "automotive/basicmath/basicmath_small.c" "automotive/basicmath/rad2deg.c" "automotive/basicmath/cubic.c" "automotive/basicmath/isqrt.c" "timers/timers.c")
+add_executable(basicmath_small ${SOURCE_FILES})
+target_link_libraries(basicmath_small PRIVATE m)
+
+set(SOURCE_FILES "office/stringsearch/bmhasrch.c" "office/stringsearch/bmhisrch.c" "office/stringsearch/bmhsrch.c" "office/stringsearch/pbmsrch_small.c" "timers/timers.c")
+add_executable(search_small ${SOURCE_FILES})
+
+
 add_executable(pwm pwm.c)
 add_executable(blkdev blkdev.c)
 add_executable(accum accum.c)

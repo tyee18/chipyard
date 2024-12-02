@@ -1,0 +1,3 @@
+rm -rf search_small search_large output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static bmhasrch.c  bmhisrch.c  bmhsrch.c  ../../timers/timers.c pbmsrch_small.c  -O3 -o search_small
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static bmhasrch.c  bmhisrch.c  bmhsrch.c  pbmsrch_large.c  -O3 -o search_large
