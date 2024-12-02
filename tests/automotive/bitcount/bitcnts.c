@@ -19,7 +19,8 @@
 
 static int CDECL bit_shifter(long int x);
 
-int main(int argc, char *argv[])
+//int main(int argc, char *argv[])
+int main()
 {
   clock_t start, stop;
   double ct, cmin = DBL_MAX, cmax = 0;
@@ -46,23 +47,28 @@ int main(int argc, char *argv[])
     "Non-recursive bit count by bytes (AR)",
     "Shift and count bits"
   };
+  /*
   if (argc<2) {
     fprintf(stderr,"Usage: bitcnts <iterations>\n");
     exit(-1);
 	}
   iterations=atoi(argv[1]);
+  */
+ // Harcoded for "small" set - for "large" set, this should be set to 1125000
+ iterations = 75000;
   
   puts("Bit counter algorithm benchmark\n");
   
 	// Initialize counters for analysis
 	Timer t;
+  init_counters();
 	t = update_start_timers(t);
   for (i = 0; i < FUNCS; i++) {
     start = clock();
     
     for (j = n = 0, seed = rand(); j < iterations; j++, seed += 13)
 	 n += pBitCntFunc[i](seed);
-    
+   
     stop = clock();
     ct = (stop - start) / (double)CLOCKS_PER_SEC;
     if (ct < cmin) {
