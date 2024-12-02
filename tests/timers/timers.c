@@ -101,7 +101,7 @@ uint64_t update_num_cycles_val()
     return num_cycles;
 }
 
-uint64_t update_cpu_time_val()
+uint64_t update_run_time_val()
 {
     uint64_t cpu_time = 0;
     __asm__ volatile("csrr %0, time"

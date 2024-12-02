@@ -149,6 +149,7 @@ main()
 	  
 	  // Initialize counters for analysis
 	  Timer t;
+	  init_counters();
 	  t = update_start_timers(t);
 
 	  // Begin benchmark execution
