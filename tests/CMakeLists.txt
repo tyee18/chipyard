@@ -67,14 +67,51 @@ add_link_options(-T ${LINKER_SCRIPT})
 # Build
 #################################
 
+#################################
 # MiBench-specific tests
-# set(SOURCE_FILES "basicmath_small.c" "rad2deg.c" "cubic.c" "isqrt.c" "timers.c")
+#################################
+
+# Automotive:
+## basicmath_small
 set(SOURCE_FILES "automotive/basicmath/basicmath_small.c" "automotive/basicmath/rad2deg.c" "automotive/basicmath/cubic.c" "automotive/basicmath/isqrt.c" "timers/timers.c")
 add_executable(basicmath_small ${SOURCE_FILES})
 target_link_libraries(basicmath_small PRIVATE m)
 
+## bitcounts_small
+set(SOURCE_FILES "automotive/bitcount/bitcnt_1.c" "automotive/bitcount/bitcnt_2.c" "automotive/bitcount/bitcnt_3.c" "automotive/bitcount/bitcnt_4.c" "automotive/bitcount/bitcnts.c" "automotive/bitcount/bitfiles.c" "automotive/bitcount/bitstrng.c" "automotive/bitcount/bstr_i.c" "timers/timers.c")
+add_executable(bitcounts_small ${SOURCE_FILES})
+target_link_libraries(bitcounts_small PRIVATE m)
+
+## qsort_small
+set(SOURCE_FILES "automotive/qsort/qsort_small.c" "timers/timers.c")
+add_executable(qsort_small ${SOURCE_FILES})
+target_link_libraries(qsort_small PRIVATE m)
+
+# Network
+## dijkstra_small
+set(SOURCE_FILES "network/dijkstra/dijkstra_small.c" "timers/timers.c")
+add_executable(dijkstra_small ${SOURCE_FILES})
+target_link_libraries(dijkstra_small PRIVATE m)
+
+# Office:
+## stringsearch_small
 set(SOURCE_FILES "office/stringsearch/bmhasrch.c" "office/stringsearch/bmhisrch.c" "office/stringsearch/bmhsrch.c" "office/stringsearch/pbmsrch_small.c" "timers/timers.c")
 add_executable(search_small ${SOURCE_FILES})
+
+# Security:
+## sha_small
+set(SOURCE_FILES "security/sha/sha_driver.c" "security/sha/sha.c" "timers/timers.c")
+add_executable(sha_small ${SOURCE_FILES})
+
+# Telecomm:
+## crc32_small
+set(SOURCE_FILES "telecomm/CRC32/crc_32.c" "timers/timers.c")
+add_executable(crc32_small ${SOURCE_FILES})
+
+# Telecomm:
+## fft_small
+set(SOURCE_FILES "telecomm/fft/main.c" "telecomm/fft/fftmisc.c " "telecomm/fft/fourierf.c" "timers/timers.c")
+add_executable(fft_small ${SOURCE_FILES})
 
 
 add_executable(pwm pwm.c)

@@ -30,7 +30,7 @@ HELP_SIMULATION_VARIABLES = \
 "   LOADMEM                = riscv elf binary that should be loaded directly into simulated DRAM. LOADMEM=1 will load the BINARY elf" \
 "   LOADARCH               = path to a architectural checkpoint directory that should end in .loadarch/, for restoring from a checkpoint" \
 "   VERBOSE_FLAGS          = flags used when doing verbose simulation [$(VERBOSE_FLAGS)]" \
-"   TIMEOUT_CYCLES         = number of clock cycles before simulator times out, defaults to 10000000" \
+"   TIMEOUT_CYCLES         = number of clock cycles before simulator times out, defaults to 1000000000" \
 "   DUMP_BINARY            = set to '1' to disassemble the target binary"
 
 # include default simulation rules
@@ -288,7 +288,7 @@ GEN_COLLATERAL_DIR ?=$(build_dir)/gen-collateral
 #########################################################################################
 # simulation variables
 #########################################################################################
-TIMEOUT_CYCLES = 10000000
+TIMEOUT_CYCLES = 1000000000
 
 # legacy timeout_cycles handling
 timeout_cycles ?=
