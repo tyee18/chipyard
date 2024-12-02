@@ -1,0 +1,3 @@
+rm -rf qsort_small qsort_large output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static qsort_small.c ../../timers/timers.c -O3 -o qsort_small -lm
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static qsort_large.c -O3 -o qsort_large -lm

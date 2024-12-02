@@ -1,0 +1,3 @@
+rm -rf *.o sha output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -O3 -Wall   -c -o sha_driver.o sha_driver.c
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -O3 -Wall   -c -o sha.o sha.c

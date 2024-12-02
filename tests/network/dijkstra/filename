@@ -1,0 +1,3 @@
+rm -rf dijkstra_large dijkstra_small output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static dijkstra_large.c -O3 -o dijkstra_large
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static dijkstra_small.c  ../../timers/timers.c -O3 -o dijkstra_small 

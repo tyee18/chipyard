@@ -1,0 +1,2 @@
+rm -rf crc output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static crc_32.c ../../timers/timers.c -O3 -o crc 

@@ -1,0 +1,5 @@
+rm -rf *.o fft output*
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 -g -c main.c ../../timers/timers.c
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 -g -c fftmisc.c
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 -g -c fourierf.c
+/home/tyee/ECE_562_BuildSpace/chipyard/.conda-env/riscv-tools/bin/riscv64-unknown-elf-gcc -static -O3 -g main.o fftmisc.o  fourierf.o -o fft ../../timers/timers.c -lm
