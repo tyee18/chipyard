@@ -6,16 +6,18 @@
 */
 
 #include <stdint.h>
+#include <time.h>
 #ifndef TIMERS_H
 #define TIMERS_H
 
-uint64_t update_cpu_time_val();
+uint64_t update_run_time_val();
 uint64_t update_instrets_val();
 uint64_t update_num_cycles_val();
 uint64_t update_instr_cache_miss_val();
 uint64_t update_data_cache_miss_val();
 uint64_t update_branch_taken_val();
 uint64_t update_branch_miss_val();
+void init_counters();
 
 typedef struct Timer
 {
