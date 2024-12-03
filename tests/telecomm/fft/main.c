@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 	float *coeff;
 	float *amp;
 	int invfft=0;
-
+	/*
 	if (argc<3)
 	{
 		printf("Usage: fft <waves> <length> -i\n");
@@ -27,6 +27,11 @@ int main(int argc, char *argv[]) {
 		invfft = !strncmp(argv[3],"-i",2);
 	MAXSIZE=atoi(argv[2]);
 	MAXWAVES=atoi(argv[1]);
+	*/
+	/* These are hardcoded to the SMALL test set because running *.riscv files does not
+	accept commandline input to the function. */
+	MAXSIZE=4096;
+	MAXWAVES=4;
 		
  srand(1);
 
@@ -64,6 +69,7 @@ int main(int argc, char *argv[]) {
 	  
  // Initialize counters for analysis
  Timer t;
+ init_counters();
  t = update_start_timers(t);
 
  /* regular*/
