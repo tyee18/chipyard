@@ -52,6 +52,7 @@ Output:
 */
 struct Timer update_start_timers(Timer t)
 {
+    clock_gettime(CLOCK_MONOTONIC, &t.startClock);
     t.numInstretsStart = update_instrets_val();
     t.numCPUCyclesStart = update_num_cycles_val();
     //t.CPUTimeStart = update_run_time_val();
@@ -71,7 +72,8 @@ Output:
     The updated Timer struct with its "stop" timers snapshotted and saved off.
 */
 struct Timer update_stop_timers(Timer t)
-{    
+{
+    clock_gettime(CLOCK_MONOTONIC, &t.endClock);
     t.numInstretsEnd = update_instrets_val();
     t.numCPUCyclesEnd = update_num_cycles_val();
     //t.CPUTimeEnd = update_run_time_val();
@@ -172,11 +174,34 @@ uint64_t update_data_cache_miss_val()
 }
 
 /*
+This function finds the difference between two timespec structs and converts it to milliseconds.
+*/
+double timespec2ms(struct timespec t1, struct timespec t2)
+{
+    struct timespec t_delta;
+    t_delta.tv_nsec = t2.tv_nsec - t1.tv_nsec;
+    t_delta.tv_sec  = t2.tv_sec - t1.tv_sec;
+    if (t_delta.tv_sec > 0 && t_delta.tv_nsec < 0)
+    {
+        t_delta.tv_nsec += 1000000000;
+        t_delta.tv_sec--;
+    }
+    else if (t_delta.tv_sec < 0 && t_delta.tv_nsec > 0)
+    {
+        t_delta.tv_nsec -= 1000000000;
+        t_delta.tv_sec++;
+    }
+    double ms = t_delta.tv_sec + (t_delta.tv_nsec / 1000000) / 1000.0;
+    return ms;
+}
+
+/*
 This function formats and prints the available timing data. This should be expanded as the
 list of events to monitor grows.
 */
 void print_timing_data(Timer t)
 {
+    double time_taken = timespec2ms(t.startClock, t.endClock);
     uint64_t total_cpu_cycles = t.numCPUCyclesEnd - t.numCPUCyclesStart;
     //uint64_t total_run_time = t.CPUTimeEnd - t.CPUTimeStart;
     uint64_t total_instrets = t.numInstretsEnd - t.numInstretsStart;
@@ -187,6 +212,7 @@ void print_timing_data(Timer t)
 
     printf("# ---------- Timing data for benchmark: ---------- #\n");
     //printf("%lu        seconds run time              #\n", total_run_time);
+    printf("%f         seconds run time              #\n", time_taken);
     printf("%lu        cycles executed               #\n", total_cpu_cycles);
     printf("%lu        instructions executed         #\n", total_instrets);
     printf("%lu        instruction cache-misses      #\n", total_instr_cache_miss);

@@ -19,7 +19,7 @@ uint64_t update_branch_taken_val();
 uint64_t update_branch_miss_val();
 void init_counters();
 
-typedef struct Timer
+typedef struct Timer    
 {
     uint64_t numInstretsStart;
     uint64_t numInstretsEnd;
@@ -35,6 +35,8 @@ typedef struct Timer
     uint64_t instrCacheMissEnd;
     uint64_t dataCacheMissStart;
     uint64_t dataCacheMissEnd;
+
+    struct timespec startClock, endClock;
 } Timer;
 
     void print_timing_data(Timer t);
