@@ -53,7 +53,7 @@ set(SPEC_FLAGS          -specs=${SPECS})
 set(LINKER_SCRIPT       "htif.ld")
 
 add_compile_options(-std=gnu99)
-add_compile_options(-O2 -Wall -Wextra)
+add_compile_options(-Wall -Wextra)
 add_compile_options(-fno-common -fno-builtin-printf)
 add_compile_options(${ARCH_FLAGS})
 add_compile_options(${SPEC_FLAGS})
@@ -91,7 +91,7 @@ target_link_libraries(qsort_small PRIVATE m)
 ## dijkstra_small - how to account for input files?
 set(SOURCE_FILES "network/dijkstra/dijkstra_small.c" "timers/timers.c")
 add_executable(dijkstra_small ${SOURCE_FILES})
-target_link_libraries(dijkstra_small PRIVATE m)
+# target_link_libraries(dijkstra_small PRIVATE unistd)
 
 # Office:
 ## stringsearch_small - DONE, PROVEN
