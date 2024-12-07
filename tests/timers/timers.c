@@ -36,7 +36,7 @@ void init_counters()
   if (supports_extension('U'))
     write_csr(mhpmevent5, 0x6001); // increment mhpmcounter5 on branch direction or jump/target misprediction
   if (supports_extension('U'))
-    write_csr(mhpmevent6, 0x202); // increment mhpmcounter5 on data cache miss
+    write_csr(mhpmevent6, 0x202); // increment mhpmcounter6 on data cache miss
 
   // Enable software interrupts
   write_csr(mie, MIP_MSIP);
@@ -120,7 +120,7 @@ uint64_t update_instrets_val()
 }
 
 /*
-This function reads the hpmcounter3, which is currently mapped to increment on instruction
+This function reads the mhpmcounter3, which is currently mapped to increment on instruction
 cache misses for our RocketCore design.
 */
 uint64_t update_instr_cache_miss_val()
